@@ -30,7 +30,7 @@ async function sendMessage() {
     });
 
     const data = await response.json();
-    submitButton.innerHTML = "Buscar"
+    submitButton.innerHTML = "Buscar";
     const chatGPTResponse = data.choices[0].message.content
     document.querySelector(".RespostaIA").innerHTML += `<div style="margin-top: 50px; text-align: justfy; font-size: 20px;"> Resultado: ${chatGPTResponse}</div>`;
 }
