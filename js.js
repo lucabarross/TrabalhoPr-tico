@@ -1,5 +1,10 @@
-const apiKey = "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";
 async function sendMessage() {
+    const url = new URL(window.location.href);
+    let apiKey = url.searchParams.get("token");
+    if(!apiKey){
+        apiKey = window.prompt("Token OpenAi");
+        
+    }
     const userMessage = document.querySelector("#recebe").value;
     document.querySelector("#recebe").value = '';
     document.querySelector(".RespostaIA").innerHTML += `<div class="user" style="margin-top: 30px;">Usuário: ${userMessage}</div>`;
@@ -31,6 +36,6 @@ async function sendMessage() {
 
     const data = await response.json();
     submitButton.innerHTML = "Buscar";
-    const chatGPTResponse = data.choices[0].message.content
+    const chatGPTResponse = data.choices[0].message.content;
     document.querySelector(".RespostaIA").innerHTML += `<div style="margin-top: 50px; text-align: justfy; font-size: 20px;"> Resultado: ${chatGPTResponse}</div>`;
 }
